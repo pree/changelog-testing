@@ -21,12 +21,12 @@ jobs:
       - uses: dangoslen/dependabot-changelog-helper@50a0884d19a0e4aa379a69c96a82b5e8d6c46d63 # v4.2.1
         name: Dependabot changelog - go
         with:
-          activationLabels: [dependencies, go]
+          activationLabels: go
           sort: alpha
       - uses: dangoslen/dependabot-changelog-helper@50a0884d19a0e4aa379a69c96a82b5e8d6c46d63 # v4.2.1
         name: Dependabot changelog - docker
         with:
-          activationLabels: [dependencies, docker]
+          activationLabels: docker
           sort: alpha
       - uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
         with:
