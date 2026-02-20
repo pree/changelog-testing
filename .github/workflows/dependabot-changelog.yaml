@@ -18,16 +18,27 @@ jobs:
 
     steps:
       - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-      - uses: dangoslen/dependabot-changelog-helper@50a0884d19a0e4aa379a69c96a82b5e8d6c46d63 # v4.2.1
+      - uses: crambl/dependabot-changelog-writer@478f44ae023312b697349f9d12b646936020936f # v1.3.1
         name: Dependabot changelog - go
+        if: ${{ contains(github.event.pull_request.labels.*.name, 'go') }}
         with:
-          activationLabels: go
-          sort: alpha
-      - uses: dangoslen/dependabot-changelog-helper@50a0884d19a0e4aa379a69c96a82b5e8d6c46d63 # v4.2.1
+          changelog-entry-pattern: '`[deb]` [old] => [new]'
+      - uses: crambl/dependabot-changelog-writer@478f44ae023312b697349f9d12b646936020936f # v1.3.1
         name: Dependabot changelog - docker
+        if: ${{ contains(github.event.pull_request.labels.*.name, 'docker') }}
         with:
-          activationLabels: docker
-          sort: alpha
-      - uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
-        with:
-          commit_message: "Update changelog"
+          changelog-entry-pattern: 'Container image `[deb]` [old] => [new]'
+# Dependabot Changelog Helper:
+#      - uses: dangoslen/dependabot-changelog-helper@50a0884d19a0e4aa379a69c96a82b5e8d6c46d63 # v4.2.1
+#        name: Dependabot changelog - go
+#        with:
+#          activationLabels: go
+#          sort: alpha
+#      - uses: dangoslen/dependabot-changelog-helper@50a0884d19a0e4aa379a69c96a82b5e8d6c46d63 # v4.2.1
+#        name: Dependabot changelog - docker
+#        with:
+#          activationLabels: docker
+#          sort: alpha
+#      - uses: stefanzweifel/git-auto-commit-action@04702edda442b2e678b25b537cec683a1493fcb9 # v7.1.0
+#        with:
+#          commit_message: "Update changelog"
