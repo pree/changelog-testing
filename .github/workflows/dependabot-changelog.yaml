@@ -23,7 +23,7 @@ jobs:
         if: ${{ contains(github.event.pull_request.labels.*.name, 'go') }}
         with:
           section-header: 'Changes'
-          changelog-entry-pattern: '`[dep]` [old] => [new]'
+          changelog-entry-pattern: '[dep] [old] => [new]'
       - uses: crambl/dependabot-changelog-writer@478f44ae023312b697349f9d12b646936020936f # v1.3.1
         name: Dependabot changelog - docker
         if: ${{ contains(github.event.pull_request.labels.*.name, 'docker') }}
